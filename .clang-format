@@ -1,0 +1,29 @@
+# __________________________________ CONTENTS ___________________________________
+#
+#    'clang-format' configuration for version 14.0.0.
+#    
+#    Newer versions use a slightly different set of flags, in case of migration
+#    following tool will prove rather helpful: https://clang-format-configurator.site
+# _______________________________________________________________________________
+
+---
+BasedOnStyle: LLVM
+AccessModifierOffset: -4
+AlignArrayOfStructures: Right
+AlignConsecutiveAssignments: AcrossComments
+AlignConsecutiveBitFields: AcrossComments
+AlignConsecutiveDeclarations: AcrossComments
+AllowShortBlocksOnASingleLine: Always
+AllowShortCaseLabelsOnASingleLine: true
+AllowShortIfStatementsOnASingleLine: AllIfsAndElse
+AllowShortLoopsOnASingleLine: true
+AlwaysBreakTemplateDeclarations: Yes
+SortUsingDeclarations: false
+ColumnLimit: 120
+IndentWidth: 4
+MaxEmptyLinesToKeep: 6
+PointerAlignment: Left
+SpacesInContainerLiterals: false
+TabWidth: 4
+StatementMacros:
+  - utl_mvl_reqs

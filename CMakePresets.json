@@ -1,0 +1,85 @@
+{
+    "version": 3,
+    
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 21,
+        "patch": 0
+    },
+    
+    "configurePresets": [
+        {
+            "name": "base",
+            "description": "Common configuration variables.",
+            "hidden": true,
+            "binaryDir": "build/",
+            "cacheVariables": {
+                "VE_COMPILE_FEATURES": "cxx_std_20"
+            }
+        },
+        {
+            "name": "gcc",
+            "description": "GCC configuration variables.",
+            "inherits": [ "base" ],
+            "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "g++",
+                "VE_TEST_FLAGS": "-O0;-g3;-Wall;-Wextra;-Wpedantic;-Werror;-fsanitize=address,undefined;-fno-sanitize-recover=all;--coverage",
+                "VE_TEST_LINKER_FLAGS": "-fsanitize=address,undefined;--coverage",
+                "VE_MAIN_FLAGS": "-O2;-Wall;-Wextra;-Wpedantic;-Werror",
+                "VE_MAIN_LINKER_FLAGS": ""
+            }
+        },
+        {
+            "name": "clang",
+            "description": "Clang configuration variables.",
+            "inherits": [ "base" ],
+            "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "clang++",
+                "VE_TEST_FLAGS": "-O0;-g3;-Wall;-Wextra;-Wpedantic;-Werror;-fsanitize=address,undefined;-fno-sanitize-recover=all;--coverage",
+                "VE_TEST_LINKER_FLAGS": "-fsanitize=address,undefined;--coverage",
+                "VE_MAIN_FLAGS": "-O2;-Wall;-Wextra;-Wpedantic;-Werror",
+                "VE_MAIN_LINKER_FLAGS": ""
+            }
+        },
+        {
+            "name": "msvc",
+            "description": "MSVC configuration variables.",
+            "inherits": [ "base" ],
+            "cacheVariables": {
+                "CMAKE_CXX_FLAGS_DEBUG": "",
+                "VE_TEST_FLAGS": "/W4;/sdl;/DEBUG;/RTC1;/Zc:preprocessor",
+                "VE_TEST_LINKER_FLAGS": "",
+                "VE_MAIN_FLAGS": "/O2;/W4;/Zc:preprocessor"
+            }
+        }
+    ],
+    
+    "buildPresets": [
+        {
+            "name": "base",
+            "description": "Common build variables.",
+            "hidden": true,
+            "jobs": 4
+        },
+        { "name": "gcc"      , "configurePreset": "gcc"      , "inherits": [ "base" ] },
+        { "name": "clang"    , "configurePreset": "clang"    , "inherits": [ "base" ] },
+        { "name": "msvc"     , "configurePreset": "msvc"     , "inherits": [ "base" ] }
+    ],
+    
+    "testPresets": [
+        {
+            "name": "base",
+            "description": "CTest arguments",
+            "hidden": true,
+            "output": {
+                "outputOnFailure": true
+            },
+            "execution": {
+                "timeout": 60
+            }
+        },
+        { "name": "gcc"      , "configurePreset": "gcc"      , "inherits": [ "base" ] },
+        { "name": "clang"    , "configurePreset": "clang"    , "inherits": [ "base" ] },
+        { "name": "msvc"     , "configurePreset": "msvc"     , "inherits": [ "base" ] }
+    ]
+}

@@ -1,0 +1,36 @@
+# Ignore everything
+*
+
+# Whitelist
+# > Git config
+!.gitignore
+!.gitattributes
+# > Toolchain config
+!.clang-format
+!.clang-tidy
+!.clangd
+!.cppcheck
+# > Docs
+!README.md
+!LICENSE.md
+!CHANGELOG.md
+!docs/
+!docs/**
+# > Build
+!CMakePresets.json
+!CMakeLists.txt
+# > Scripts
+!cmake/
+!cmake/**
+# > Code
+!ratlib/
+!ratlib/**
+!include/
+!include/**
+!source/
+!source/**
+!tests/
+!tests/**
+# > Assets & binaries
+!content/
+!content/**
